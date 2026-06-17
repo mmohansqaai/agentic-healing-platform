@@ -1,0 +1,19 @@
+{
+  "name": "playwright-plug-and-play-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone demo — ai-healing-sdk plug-and-play integration",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "HEADED=1 playwright test --headed",
+    "postinstall": "npm ls ai-healing-sdk"
+  },
+  "dependencies": {
+    "ai-healing-sdk": "file:../../packages/ai-healing-sdk"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

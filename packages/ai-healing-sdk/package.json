@@ -1,0 +1,51 @@
+{
+  "name": "ai-healing-sdk",
+  "version": "0.3.0",
+  "description": "Plug-and-play agentic self-healing SDK for Playwright automation",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "STANDALONE-REPO.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "ai-healing-core": "file:../ai-healing-core"
+  },
+  "peerDependencies": {
+    "@playwright/test": ">=1.40.0"
+  },
+  "peerDependenciesMeta": {
+    "@playwright/test": {
+      "optional": false
+    }
+  },
+  "keywords": [
+    "playwright",
+    "self-healing",
+    "locator",
+    "test-automation",
+    "ai-healing"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "agentic-healing-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "All-in-one agentic healing monorepo — ai-healing-sdk + healing-service + locator/LLM agents (no Nova).",
+  "workspaces": [
+    "packages/*",
+    "services/*",
+    "agents/*"
+  ],
+  "scripts": {
+    "build:core": "npm run build -w ai-healing-core",
+    "build:cypress": "npm run build:core && npm run build -w ai-healing-cypress",
+    "build:selenium": "npm run build:core && npm run build -w ai-healing-selenium",
+    "build:java": "mvn -q -f packages/ai-healing-java/pom.xml package",
+    "build:sdk": "npm run build:core && npm run build -w ai-healing-sdk",
+    "pack:sdk": "npm run build:sdk && mkdir -p dist-packages && npm pack -w ai-healing-sdk --pack-destination ./dist-packages",
+    "build:llm-provider": "npm run build -w llm-provider",
+    "build:locator-agent": "npm run build:sdk && npm run build -w locator-agent",
+    "build:llm-locator-agent": "npm run build:sdk && npm run build -w llm-provider && npm run build -w locator-agent && npm run build -w llm-locator-agent",
+    "build:healing-service": "npm run build:llm-locator-agent && npm run build -w healing-service",
+    "healing-service": "npm run build:healing-service && npm run start -w healing-service",
+    "install:plug-and-play-demo": "npm run build:sdk && npm install --prefix examples/playwright-plug-and-play",
+    "test:plug-and-play": "npm run install:plug-and-play-demo && npm run test:headed --prefix examples/playwright-plug-and-play",
+    "test:plug-and-play:ci": "npm run install:plug-and-play-demo && npm test --prefix examples/playwright-plug-and-play",
+    "test:unit": "npm run build:llm-locator-agent && RUN_UNIT_TESTS=1 playwright test tests/*.unit.spec.ts",
+    "test:healing-service-phase2": "HEALING_SERVICE_URL=http://localhost:3921 AUTO_HEAL_DISCOVER=1 playwright test --config=playwright.phase2.config.ts",
+    "test:locator-agent-phase3": "HEALING_SERVICE_URL=http://localhost:3921 AUTO_HEAL_DISCOVER=1 playwright test --config=playwright.phase3.config.ts",
+    "test:llm-agent": "npm run build:llm-locator-agent && RUN_UNIT_TESTS=1 playwright test tests/llm-provider.unit.spec.ts tests/llm-locator-agent.unit.spec.ts tests/agentic-healing.unit.spec.ts",
+    "test": "playwright test",
+    "install:browsers": "playwright install chromium",
+    "extract:healing-sdk-repo": "node scripts/extract-healing-sdk-repo.mjs",
+    "publish:healing-sdk-github": "bash scripts/publish-healing-sdk-github.sh"
+  },
+  "dependencies": {
+    "ai-healing-sdk": "file:packages/ai-healing-sdk"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmohansqaai/agentic-healing-platform.git"
+  },
+  "homepage": "https://github.com/mmohansqaai/agentic-healing-platform#readme",
+  "bugs": {
+    "url": "https://github.com/mmohansqaai/agentic-healing-platform/issues"
+  }
+}

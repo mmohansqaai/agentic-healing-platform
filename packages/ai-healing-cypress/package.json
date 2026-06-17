@@ -1,0 +1,49 @@
+{
+  "name": "ai-healing-cypress",
+  "version": "0.1.0",
+  "description": "Cypress adapter implementing HealingDriver for agentic test healing",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "ai-healing-core": "file:../ai-healing-core"
+  },
+  "peerDependencies": {
+    "cypress": ">=12"
+  },
+  "peerDependenciesMeta": {
+    "cypress": {
+      "optional": false
+    }
+  },
+  "keywords": [
+    "cypress",
+    "self-healing",
+    "locator",
+    "test-automation",
+    "ai-healing"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}
+

@@ -1,0 +1,38 @@
+{
+  "name": "ai-healing-core",
+  "version": "0.1.0",
+  "description": "Framework-agnostic contracts and HealingDriver interface for agentic test healing (SaaS-ready)",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "test-automation",
+    "self-healing",
+    "locator",
+    "playwright",
+    "cypress",
+    "selenium"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

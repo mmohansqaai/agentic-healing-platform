@@ -1,0 +1,24 @@
+{
+  "name": "healing-service",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI healing gateway — locator recovery orchestration (Phase 2)",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "npm run build && npm run start"
+  },
+  "dependencies": {
+    "ai-healing-sdk": "file:../../packages/ai-healing-sdk",
+    "express": "^4.21.2",
+    "llm-locator-agent": "file:../../agents/llm-locator-agent",
+    "llm-provider": "file:../../packages/llm-provider",
+    "locator-agent": "file:../../agents/locator-agent"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

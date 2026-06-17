@@ -1,0 +1,50 @@
+{
+  "name": "ai-healing-selenium",
+  "version": "0.1.0",
+  "description": "Selenium WebDriver adapter implementing HealingDriver for agentic test healing",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "ai-healing-core": "file:../ai-healing-core"
+  },
+  "peerDependencies": {
+    "selenium-webdriver": ">=4.10.0"
+  },
+  "peerDependenciesMeta": {
+    "selenium-webdriver": {
+      "optional": false
+    }
+  },
+  "keywords": [
+    "selenium",
+    "webdriver",
+    "self-healing",
+    "locator",
+    "test-automation",
+    "ai-healing"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "selenium-webdriver": "^4.27.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+dist-packages/
+playwright-report/
+playwright-report-plug-and-play/
+test-results/
+*.tgz
+.DS_Store
